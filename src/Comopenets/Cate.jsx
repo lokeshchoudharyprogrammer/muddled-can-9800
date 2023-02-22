@@ -12,6 +12,7 @@ export const Cate = () => {
         }}
       >
         <div>
+        
           <img
             src="https://static.thcdn.com/images/small/webp/widgets/208-us/20/DS_Round_Nav_-_Untitled_Page_%287%29-052520.png"
             alt=""

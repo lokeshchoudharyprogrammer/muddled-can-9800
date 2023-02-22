@@ -23,6 +23,7 @@ import {
 } from 'react-icons/ai';
 export const Navbar = () => {
   return (
+    
     <>
       <div className={navarcss.sticky}>
         <div

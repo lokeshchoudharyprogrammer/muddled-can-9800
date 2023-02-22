@@ -21,6 +21,7 @@ export const Footer = () => {
             }}
           >
             <button>SIGN UP ME</button>
+            
           </div>
         </div>
         <div>d</div>
