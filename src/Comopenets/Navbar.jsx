@@ -2,9 +2,13 @@ import React from 'react';
 import navarcss from '../Css/Navbar.module.css';
 // import Carousel from '../Comopenets/Silder';
 import { Footer } from './Footer';
+import { ProductCau } from './ProductCau';
+import { Productbuy2 } from './Productbuy2';
 import Carousel from './Carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Cate } from './Cate';
+import { ImageBox } from './ImageBox';
+import { ProductBuy } from './ProductBuy';
 import { Box, Flex, Spacer, Image, Input } from '@chakra-ui/react';
 import {
   AiOutlineSearch,
@@ -13,7 +17,6 @@ import {
 } from 'react-icons/ai';
 import logo from '../Avatar/logos.png';
 import {
-  // import { Carousel } from 'react-responsive-carousel';
   AiFillCar,
   AiOutlinePercentage,
   AiOutlineCheckCircle,
@@ -21,9 +24,9 @@ import {
   AiOutlineCloudDownload,
   AiOutlineCheckSquare,
 } from 'react-icons/ai';
+import { BrandsWithus } from './BrandsWithus';
 export const Navbar = () => {
   return (
-    
     <>
       <div className={navarcss.sticky}>
         <div
@@ -58,7 +61,7 @@ export const Navbar = () => {
                 }}
                 placeholder="Search For A Product And Brand..."
               />
-              <AiOutlineSearch style={{ width: 'auto', height: '29px' }} />
+              <AiOutlineSearch style={{ width: 'auto', height: '18px' }} />
             </div>
           </div>
 
@@ -76,7 +79,7 @@ export const Navbar = () => {
                 marginTop: '6px',
               }}
             >
-              <AiOutlineUser style={{ width: 'auto', height: '29px' }} />
+              <AiOutlineUser style={{ width: 'auto', height: '18px' }} />
               Account
             </Flex>
           </Box>
@@ -150,7 +153,12 @@ export const Navbar = () => {
         </div>
       </div>
       <Carousel />
-      <Cate/>
+      <Cate />
+      <ProductBuy/>
+      <ImageBox/>
+      <Productbuy2 />
+      <BrandsWithus />
+      <ProductCau />
       <Footer />
     </>
   );
