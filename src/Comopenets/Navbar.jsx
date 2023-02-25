@@ -25,6 +25,7 @@ import {
   AiOutlineCheckSquare,
 } from 'react-icons/ai';
 import { BrandsWithus } from './BrandsWithus';
+import { Refer } from './Refer';
 export const Navbar = () => {
   return (
     <>
@@ -154,8 +155,10 @@ export const Navbar = () => {
       </div>
       <Carousel />
       <Cate />
-      <ProductBuy/>
-      <ImageBox/>
+
+      <ProductBuy />
+      <Refer />
+      <ImageBox />
       <Productbuy2 />
       <BrandsWithus />
       <ProductCau />
