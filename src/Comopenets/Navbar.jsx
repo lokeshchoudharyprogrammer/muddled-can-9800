@@ -101,7 +101,7 @@ export const Navbar = () => {
         </div>
         <div className={navarcss.brands}>
           <div>Brands</div>
-          <div>Browse By</div>
+          <div>Blush</div>
           <div>Bestsellers</div>
           <div>Skin Care</div>
           <div>Hair Care</div>
