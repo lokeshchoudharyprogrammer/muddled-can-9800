@@ -2,7 +2,7 @@
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-
+    margin-bottom: 56px;
     padding: 5px;
     font-size: 20px;
     position: relative;
@@ -39,4 +39,42 @@
 .icons {
     width: 28px;
     height: 22px;
+}
+
+.Apps ul {
+    margin-top: 52px;
+    font-family: sans-serif;
+    text-align: center;
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    margin-bottom: "23px";
+    text-decoration: "none";
+}
+
+.Apps ul li {
+    font-family: sans-serif;
+    text-align: center;
+    display: flex;
+    border: 2px solid;
+    border-radius: 9px;
+    padding: 9px;
+    text-decoration: "none";
+}
+
+.Apps {
+    margin-top: "23px";
+    margin-top: 34px;
+    margin-bottom: 23px;
+}
+
+.pro {
+    display: grid;
+    border-radius: 12px;
+    
+    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
 }
