@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import navarcss from '../Css/Navbar.module.css';
 // import Carousel from '../Comopenets/Silder';
 import { Footer } from './Footer';
@@ -26,12 +27,35 @@ import {
 } from 'react-icons/ai';
 import { BrandsWithus } from './BrandsWithus';
 import { Refer } from './Refer';
-import { useNavigate } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
-export const Navbar = () => {
-  const navigate = useNavigate();
+
+import ReactPaginate from 'react-paginate';
+export const Bronze = () => {
+  const [data, setdata] = useState([]);
+  const [totalpost, settotalpost] = useState(1);
+
   const [brands, setBrand] = React.useState('');
   console.log(brands);
+  useEffect(() => {
+    da();
+    t();
+  }, []);
+  function da(page) {
+    return fetch(`http://localhost:2000/Bronzer?_page=${page}&_limit=7`)
+      .then(res => res.json())
+      .then(r => setdata(r));
+  }
+
+  function t(page) {
+    return fetch(`http://localhost:2000/Bronzer?_page=${page}&_limit=10`).then(
+      res => settotalpost(res.headers.get('X-Total-Count'))
+    );
+  }
+
+  function hanlePageClick(data) {
+    da(data.selected + 1 + 1);
+  }
+
+  console.log(totalpost);
   return (
     <>
       <div className={navarcss.sticky}>
@@ -41,13 +65,16 @@ export const Navbar = () => {
             width: '90%',
             marginTop: '12px',
             display: 'flex',
+            marginBottom: '23px',
           }}
         >
           <div w="100px" h="10">
-            <Image
-              style={{ borderRadius: '14px', width: '99px', height: '66px' }}
-              src={logo}
-            />
+            <NavLink to="/">
+              <Image
+                style={{ borderRadius: '14px', width: '99px', height: '66px' }}
+                src={logo}
+              />
+            </NavLink>
           </div>
           <Spacer />
           <div w="380px" h="10">
@@ -106,10 +133,9 @@ export const Navbar = () => {
         </div>
         <div className={navarcss.brands}>
           <div>Brands</div>
-
           <div>
-            <NavLink to="/blush">
-              <button onClick={() => setBrand('blush')}>Blush</button>
+            <NavLink to="/Bronze">
+              <button onClick={() => setBrand('Bronze')}>Bronze</button>
             </NavLink>
           </div>
           <div>
@@ -143,53 +169,82 @@ export const Navbar = () => {
           </div>
         </div>
       </div>
-
       <div
         style={{
+          width: '100%',
+          justifyContent: 'space-evenly',
           display: 'flex',
-          justifyContent: 'space-around',
-          marginTop: '23px',
-          backgroundColor: '#rgb(98 98 98)',
-          color: 'white',
-          height: '65px',
         }}
       >
-        <div className={navarcss.Details}>
-          {' '}
-          <AiFillCar /> FREE US Shipping $50+
-        </div>
-        <div className={navarcss.Details}>
-          {' '}
-          <AiOutlinePercentage className={navarcss.icons} /> New Customers Save
-          15%*
-        </div>
-        <div className={navarcss.Details}>
-          <AiOutlineCheckCircle className={navarcss.icons} /> Dermstore Rewards
-        </div>
-        <div className={navarcss.Details}>
-          {' '}
-          <AiOutlineFieldTime className={navarcss.icons} />
-          Ask The Esthetician
-        </div>
-        <div className={navarcss.Details}>
-          {' '}
-          <AiOutlineCloudDownload className={navarcss.icons} />
-          Download Our App
-        </div>
-        <div className={navarcss.Details}>
-          <AiOutlineCheckSquare className={navarcss.icons} /> Refer a Friend,
-          Get $15
+        {/* <div style={{ width: '30%' }}>fxg</div> */}
+        <div
+          style={{
+            width: '70%',
+            display: 'grid',
+            gap: '15px',
+            padding: '10px',
+            gridTemplateColumns: 'repeat(2,1fr)',
+            borderRadius: '14px',
+          }}
+        >
+          {data.map(item => {
+            return (
+              <div className={navarcss.pro} key={item.id}>
+                <img
+                  style={{
+                    display: 'flex',
+                    margin: 'auto',
+                    borderRadius: '9px',
+                    marginTop: '20px',
+                  }}
+                  width="40%"
+                  src={item?.image_link}
+                  alt=""
+                />
+                <div
+                  style={{
+                    display: 'grid',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom: '19px',
+                  }}
+                >
+                  <p>{item?.name}</p>
+                  <p>{item?.price}</p>
+
+                  <NavLink to={`/blush/${item.id}`}>
+                    <button
+                      style={{
+                        padding: '9px',
+                        textAlign: 'center',
+                        borderRadius: '12px',
+                        marginTop: '18px',
+                        background: 'black',
+                        color: 'white',
+                      }}
+                    >
+                      More Details
+                    </button>
+                  </NavLink>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
-      <Carousel />
-      <Cate />
 
-      <ProductBuy />
-      <Refer />
-      <ImageBox />
-      <Productbuy2 />
-      <BrandsWithus />
-      <ProductCau />
+      <div className={navarcss.Apps}>
+        <ReactPaginate
+          breakLabel="..."
+          pageRangeDisplayed={2}
+          previousLabel={'Pre'}
+          NextLabel={10}
+          pageCount={Math.ceil(totalpost / 6)}
+          marginPageDispalyed={3}
+          pageRangeDispalyed={2}
+          onPageChange={hanlePageClick}
+        />
+      </div>
       <Footer />
     </>
   );
