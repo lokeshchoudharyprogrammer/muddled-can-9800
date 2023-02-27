@@ -29,7 +29,9 @@ import { BrandsWithus } from './BrandsWithus';
 import { Refer } from './Refer';
 
 import ReactPaginate from 'react-paginate';
-export const Blush = ({ ids }) => {
+export const Mascara = () => {
+
+    
   const [data, setdata] = useState([]);
   const [totalpost, settotalpost] = useState(1);
 
@@ -40,13 +42,13 @@ export const Blush = ({ ids }) => {
     t();
   }, []);
   function da(page) {
-    return fetch(`http://localhost:2000/blush?_page=${page}&_limit=7`)
+    return fetch(`http://localhost:2000/mascara?_page=${page}&_limit=7`)
       .then(res => res.json())
       .then(r => setdata(r));
   }
 
   function t(page) {
-    return fetch(`http://localhost:2000/blush?_page=${page}&_limit=10`).then(
+    return fetch(`http://localhost:2000/mascara?_page=${page}&_limit=10`).then(
       res => settotalpost(res.headers.get('X-Total-Count'))
     );
   }
@@ -134,36 +136,56 @@ export const Blush = ({ ids }) => {
         <div className={navarcss.brands}>
           <div>Brands</div>
           <div>
-            <NavLink to="/blush">
-              <button onClick={() => setBrand('blush')}>Blush</button>
+            <NavLink to="/Bronze">
+              <button onClick={() => setBrand('Bronze')}>Bronze</button>
             </NavLink>
           </div>
           <div>
-            <button onClick={() => setBrand('Bronze')}>Bronze</button>r
+            <NavLink to="/bronze">
+              <button onClick={() => setBrand('Bronze')}>Bronze</button>r
+            </NavLink>
           </div>
           <div>
-            <button onClick={() => setBrand('eyebrow')}>Eyebrow</button>
+            <NavLink to="/eyebrow">
+              <button onClick={() => setBrand('eyebrow')}>Eyebrow</button>
+            </NavLink>
           </div>
           <div>
-            <button onClick={() => setBrand('eyeliner')}>Eyeliner</button>
+            <NavLink to="/eyeliner">
+              <button onClick={() => setBrand('eyeliner')}>Eyeliner</button>
+            </NavLink>
           </div>
           <div>
-            <button onClick={() => setBrand('eyeshadow')}>Eyeshadow</button>
+            <NavLink to="/eyeshadow">
+              <button onClick={() => setBrand('eyeshadow')}>Eyeshadow</button>
+            </NavLink>
           </div>
           <div>
-            <button onClick={() => setBrand('foundation')}>Foundation</button>
+            <NavLink to="/foundation">
+              <button onClick={() => setBrand('foundation')}>Foundation</button>
+            </NavLink>
           </div>
           <div>
-            <button onClick={() => setBrand('lipliner')}>Lip liner</button>
+            <NavLink to="/lipliner">
+              <button onClick={() => setBrand('lipliner')}>Lip liner</button>
+            </NavLink>
           </div>
           <div>
-            <button onClick={() => setBrand('lipstick')}>Lipstick</button>
+            <NavLink to="/lipstick">
+              <button onClick={() => setBrand('lipstick')}>Lipstick</button>
+            </NavLink>
           </div>
           <div>
-            <button onClick={() => setBrand('mascara')}>Mascara</button>
+            <NavLink to="/mascara">
+              <button onClick={() => setBrand('mascara')}>Mascara</button>
+            </NavLink>
           </div>
           <div>
-            <button onClick={() => setBrand('nailpolish')}>Nail polish</button>
+            <NavLink to="/nailpolish">
+              <button onClick={() => setBrand('nailpolish')}>
+                Nail polish
+              </button>
+            </NavLink>
           </div>
         </div>
       </div>
@@ -177,11 +199,11 @@ export const Blush = ({ ids }) => {
         {/* <div style={{ width: '30%' }}>fxg</div> */}
         <div
           style={{
-            width: '100%',
+            width: '70%',
             display: 'grid',
             gap: '15px',
             padding: '10px',
-            gridTemplateColumns: 'repeat(4,1fr)',
+            gridTemplateColumns: 'repeat(2,1fr)',
             borderRadius: '14px',
           }}
         >

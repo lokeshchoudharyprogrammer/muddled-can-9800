@@ -77,6 +77,8 @@ export const Navbar = () => {
             h="10"
             style={{ justifyContent: 'center', alignItems: 'center' }}
           >
+             <NavLink to='/login'>
+
             <Flex
               title="Account"
               style={{
@@ -88,8 +90,11 @@ export const Navbar = () => {
               <AiOutlineUser style={{ width: 'auto', height: '18px' }} />
               Account
             </Flex>
+             </NavLink>
           </Box>
           <Box w="180px" h="10" gap={2}>
+          <NavLink to='/card'>
+
             <Flex
               title="Cart"
               style={{
@@ -102,6 +107,7 @@ export const Navbar = () => {
               <AiOutlineShopping style={{ width: 'auto', height: '29px' }} />
               Cart
             </Flex>
+          </NavLink>
           </Box>
         </div>
         <div className={navarcss.brands}>

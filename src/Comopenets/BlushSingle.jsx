@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import navarcss from '../Css/Navbar.module.css';
 // import Carousel from '../Comopenets/Silder';
 import { Footer } from './Footer';
+import { useToast } from '@chakra-ui/react';
 import { ProductCau } from './ProductCau';
 import { Productbuy2 } from './Productbuy2';
 import Carousel from './Carousel';
@@ -13,7 +14,6 @@ import {
   AiOutlineUser,
 } from 'react-icons/ai';
 import logo from '../Avatar/logos.png';
-
 
 import {
   Spacer,
@@ -49,6 +49,26 @@ export const BlushSingle = () => {
   const Fetchdata = () => {
     return axios.get(`http://localhost:2000/blush/${id}`).then(res => {
       setdata(res.data);
+    });
+  };
+  const toast = useToast();
+
+  const { image_link, name, price } = data;
+  const handlesubmit = (id, price) => {
+    toast({
+      position: 'top',
+      title: 'Add To Cart Success.',
+
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+    });
+
+    axios.post('http://localhost:2000/Card', {
+      id,
+      name,
+      image_link,
+      price,
     });
   };
 
@@ -176,7 +196,7 @@ export const BlushSingle = () => {
             </Box>
 
             <Button
-              onClick={onOpen}
+              onClick={() => handlesubmit(data.id, data.price)}
               rounded={'none'}
               w={'full'}
               mt={8}
